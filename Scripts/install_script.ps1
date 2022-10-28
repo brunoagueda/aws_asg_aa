@@ -60,7 +60,7 @@ try{
 
     $runner_User = $runner_User_param.Split("/")[-1]
 
-    #$payload = '{\"runnerUser\":\"'+$runner_User+'\" , \"runnerDevice\":\"'+$env:COMPUTERNAME+'\"}' # acrescentar o device pool
+    $payload = '{\"runnerUser\":\"'+$runner_User+'\" , \"runnerDevice\":\"'+$env:COMPUTERNAME+'\"}' # acrescentar o device pool
 
     #aws lambda invoke --function-name $lambdaName --cli-binary-format raw-in-base64-out --payload $payload response.json
 

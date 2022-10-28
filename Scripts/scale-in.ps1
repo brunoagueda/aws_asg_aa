@@ -1,9 +1,9 @@
 
 
 #$COMPUTERNAME = "EC2AMAZ-UNAQJPL"
+$name = $env:COMPUTERNAME
 
-
-$devieceParameterName = (Get-SSMParameterList | Where-Object {$_.name -like "*$env:COMPUTERNAME"}).name
+$devieceParameterName = (Get-SSMParameterList | Where-Object {$_.name -match $name}).name
 
 $instanceID = (Get-SSMParameterValue -Name $devieceParameterName).Parameters.Value
 
