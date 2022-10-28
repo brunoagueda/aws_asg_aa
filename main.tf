@@ -2,13 +2,17 @@ resource "aws_launch_template" "as_config" {
   name = "teste-asg-launch-template"
   image_id = "ami-07a53499a088e4a8c"
   instance_type = "t2.micro"
+  key_name = "ec2-tutorial"
+  iam_instance_profile {
+    name = "EC2-Allow-SSM-Management"
+  }
   user_data = filebase64("./Scripts/install_script.tpl")
 }
 
 resource "aws_autoscaling_group" "asg" {
   name = "asg-teste"
   availability_zones = ["us-east-1a"]
-  desired_capacity = 1
+  desired_capacity = 2
   max_size = 2
   min_size = 1
   launch_template {
